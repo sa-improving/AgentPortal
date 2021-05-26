@@ -53,9 +53,11 @@ namespace AgentPortal.Controllers
             return Json(agents);
         }
 
-        public IActionResult Agent(string? AgentCode)
+        public IActionResult Agent(string id)
         {
-            return View();
+            var vm = new AgentViewModel();
+            vm.agent = _agentData.GetAgentByAgentCode(id);
+            return View(vm);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
