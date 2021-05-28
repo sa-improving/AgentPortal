@@ -1,0 +1,22 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2>New Agent</h2>
+
+<form action="/home/newAgent" method="post">
+    <label for="agentName">Agent Name: </label>
+    <input name="agentName" id="agentName" placeholder="AgentName" />
+
+    <label for="workingArea">Working Area: </label>
+    <input name="workingArea" id="commission" placeholder="WorkingArea" />
+
+    <label for="commission">Commission: </label>
+    <input name="commission" id="commission" placeholder="Commission" type="number" step=".01" />
+
+    <label for="phoneNo">Phone No: </label>
+    <input name="phoneNo" id="phoneNo" placeholder="1234567890" />
+
+    <button type="submit">Submit</button>
+</form>

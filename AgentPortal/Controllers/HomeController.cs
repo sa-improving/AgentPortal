@@ -60,6 +60,19 @@ namespace AgentPortal.Controllers
             return View(vm);
         }
 
+        [HttpGet]
+        public IActionResult NewAgent()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult NewAgent(Agent agent)
+        {
+
+            return RedirectToAction("Index");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
