@@ -4,21 +4,31 @@
 @model AgentPortal.ViewModels.AgentCodeViewModel
 <h2>New Agent</h2>
 
-<form action="/home/newAgent" method="post" style="display: grid; padding: 2em">
-    <label style="display : none" for="agentCode">Agent Code:</label>
-    <input style="display : none" name="agentCode" id="agentCode" placeholder="AgentCode" value="@Model.AgentCode"/>
+<form action="/home/newAgent" method="post" style="display: grid; width: 30%">
+    <label style="display : none" for="agentCode">
+        Agent Code:
+        <input style="display : none" name="agentCode" id="agentCode" placeholder="AgentCode" value="@Model.AgentCode" />
+    </label>
 
-    <label for="agentName">Agent Name: </label>
-    <input name="agentName" id="agentName" placeholder="AgentName" />
+    <label for="agentName">
+        Agent Name:
+        <input name="agentName" id="agentName" placeholder="AgentName" />
+    </label>
 
-    <label for="workingArea">Working Area: </label>
-    <input name="workingArea" id="commission" placeholder="WorkingArea" />
+    <label for="workingArea">
+        Working Area:
+        <input name="workingArea" id="commission" placeholder="WorkingArea" />
+    </label>
 
-    <label for="commission">Commission: </label>
-    <input name="commission" id="commission" placeholder="Commission" type="number" step=".01" />
+    <label for="commission">
+        Commission:
+        <input name="commission" id="commission" placeholder="Commission" type="number" step=".01" />
+    </label>
 
-    <label for="phoneNo">Phone No: </label>
-    <input name="phoneNo" id="phoneNo" placeholder="1234567890" />
+    <label for="phoneNo">
+        Phone No:
+        <input name="phoneNo" id="phoneNo" placeholder="1234567890" />
+    </label>
 
     <button type="submit" style="margin-top: 1em">Submit</button>
 </form>
