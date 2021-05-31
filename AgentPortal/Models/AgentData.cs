@@ -110,7 +110,14 @@ namespace AgentPortal.Models
                 var cmd = new SqlCommand();
 
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.CommandText = "Insert INTO Books (AgentCode, AgentName, WorkingArea, Commission, PhoneNo) VALUES (@agentCode, @agentName, @workingArea, @commission, @phoneNo)";
+                cmd.CommandText = "Insert INTO Agents (AgentCode, AgentName, WorkingArea, Commission, PhoneNo) VALUES (@agentCode, @agentName, @workingArea, @commission, @phoneNo)";
+                cmd.Parameters.Add(new SqlParameter { ParameterName = "@agentCode", Value = agent.AgentCode, SqlDbType = System.Data.SqlDbType.Char });
+                cmd.Parameters.Add(new SqlParameter { ParameterName = "@agentName", Value = agent.AgentName, SqlDbType = System.Data.SqlDbType.VarChar });
+                cmd.Parameters.Add(new SqlParameter { ParameterName = "@workingArea", Value = agent.WorkingArea, SqlDbType = System.Data.SqlDbType.VarChar });
+                cmd.Parameters.Add(new SqlParameter { ParameterName = "commission", Value = agent.Commission, SqlDbType = System.Data.SqlDbType.Decimal });
+                cmd.Parameters.Add(new SqlParameter { ParameterName = "@phoneNo", Value = agent.PhoneNo, SqlDbType = System.Data.SqlDbType.Char });
+                cmd.Connection = conn;
+                cmd.ExecuteNonQuery();
 
             }
         }

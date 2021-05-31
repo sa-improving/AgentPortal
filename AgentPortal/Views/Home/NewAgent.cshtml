@@ -4,9 +4,9 @@
 @model AgentPortal.ViewModels.AgentCodeViewModel
 <h2>New Agent</h2>
 
-<form action="/home/newAgent" method="post" style="display: grid; padding: 1em">
-    <label for="agentCode">Agent Code:</label>
-    <input name="agentCode" id="agentCode" placeholder="AgentCode" value="@Model.AgentCode" disabled/>
+<form action="/home/newAgent" method="post" style="display: grid; padding: 2em">
+    <label style="display : none" for="agentCode">Agent Code:</label>
+    <input style="display : none" name="agentCode" id="agentCode" placeholder="AgentCode" value="@Model.AgentCode"/>
 
     <label for="agentName">Agent Name: </label>
     <input name="agentName" id="agentName" placeholder="AgentName" />
