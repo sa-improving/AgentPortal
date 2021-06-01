@@ -37,8 +37,9 @@ namespace AgentPortal.Controllers
         public IActionResult Agents()
         {
             var agents = _agentData.AllAgentData();
+            var visibleAgents = _agentData.VisibleAgents(agents);
             var vm = new AgentListViewModel();
-            vm.Agents = agents;
+            vm.Agents = visibleAgents;
             return View(vm);
         }
 

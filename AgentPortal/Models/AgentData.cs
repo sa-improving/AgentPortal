@@ -41,8 +41,7 @@ namespace AgentPortal.Models
                     var commission = Convert.ToDouble(reader["Commission"]);
                     var phoneNo = reader["PhoneNo"].ToString();
                     var isDeleted = Convert.ToBoolean(reader["IsDeleted"]);
-                    if(isDeleted == false)
-                    {
+                  
                         agents.Add(new Agent
                         {
                             AgentCode = agentCode,
@@ -52,7 +51,7 @@ namespace AgentPortal.Models
                             PhoneNo = phoneNo,
                             IsDeleted = isDeleted
                         });
-                    }
+                    
                 }
             }
             return agents;
@@ -123,6 +122,19 @@ namespace AgentPortal.Models
                 cmd.ExecuteNonQuery();
 
             }
+        }
+
+        public List<Agent> VisibleAgents(List<Agent> agentList)
+        {
+            List<Agent> visible = new List<Agent>();
+            foreach(var agent in agentList)
+            {
+                if(agent.IsDeleted == false)
+                {
+                    visible.Add(agent);
+                }
+            }
+            return visible;
         }
 
         public void HideAgent(string agentCode)
