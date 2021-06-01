@@ -40,16 +40,19 @@ namespace AgentPortal.Models
                     var workingArea = reader["WorkingArea"].ToString();
                     var commission = Convert.ToDouble(reader["Commission"]);
                     var phoneNo = reader["PhoneNo"].ToString();
-
-                    agents.Add(new Agent
+                    var isDeleted = Convert.ToBoolean(reader["IsDeleted"]);
+                    if(isDeleted == false)
                     {
-                        AgentCode = agentCode,
-                        AgentName = agentName,
-                        WorkingArea = workingArea,
-                        Commission = commission,
-                        PhoneNo = phoneNo
-                    });
-
+                        agents.Add(new Agent
+                        {
+                            AgentCode = agentCode,
+                            AgentName = agentName,
+                            WorkingArea = workingArea,
+                            Commission = commission,
+                            PhoneNo = phoneNo,
+                            IsDeleted = isDeleted
+                        });
+                    }
                 }
             }
             return agents;
@@ -119,6 +122,23 @@ namespace AgentPortal.Models
                 cmd.Connection = conn;
                 cmd.ExecuteNonQuery();
 
+            }
+        }
+
+        public void HideAgent(string agentCode)
+        {
+            var connString = _configuration.GetConnectionString("default");
+            using(var conn = new SqlConnection(connString))
+            {
+                conn.Open();
+
+                var cmd = new SqlCommand();
+
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandText = "UPDATE Agents SET IsDeleted = 1 WHERE AgentCode = @agentCode";
+                cmd.Parameters.Add(new SqlParameter { ParameterName = "@agentCode", Value = agentCode , SqlDbType = System.Data.SqlDbType.Char});
+                cmd.Connection = conn;
+                cmd.ExecuteNonQuery();
             }
         }
     }

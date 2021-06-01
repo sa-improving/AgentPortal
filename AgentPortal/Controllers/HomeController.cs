@@ -78,6 +78,12 @@ namespace AgentPortal.Controllers
             return RedirectToAction("Agents");
         }
 
+        public IActionResult HideAgent(string id)
+        {
+            _agentData.HideAgent(id);
+            return RedirectToAction("Agents");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -12,5 +12,6 @@ namespace AgentPortal.Models
         public string WorkingArea { get; set; }
         public double Commission { get; set; }
         public string PhoneNo { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }
