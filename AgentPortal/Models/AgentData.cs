@@ -200,7 +200,7 @@ namespace AgentPortal.Models
                     " Where AgentCode = @agentCode";
                 cmd.Parameters.Add(new SqlParameter { ParameterName = "@agentName", Value = agent.AgentName, SqlDbType = System.Data.SqlDbType.VarChar });
                 cmd.Parameters.Add(new SqlParameter { ParameterName = "@workingArea", Value = agent.WorkingArea, SqlDbType = System.Data.SqlDbType.VarChar });
-                cmd.Parameters.Add(new SqlParameter { ParameterName = "commission", Value = agent.Commission, SqlDbType = System.Data.SqlDbType.Decimal });
+                cmd.Parameters.Add(new SqlParameter { ParameterName = "@commission", Value = agent.Commission, SqlDbType = System.Data.SqlDbType.Decimal });
                 cmd.Parameters.Add(new SqlParameter { ParameterName = "@phoneNo", Value = agent.PhoneNo, SqlDbType = System.Data.SqlDbType.Char });
                 cmd.Parameters.Add(new SqlParameter { ParameterName = "@agentCode", Value = agent.AgentCode, SqlDbType = System.Data.SqlDbType.Char });
                 cmd.Connection = conn;
