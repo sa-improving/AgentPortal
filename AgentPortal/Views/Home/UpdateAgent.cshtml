@@ -1,0 +1,31 @@
+﻿@{
+}
+<h2>Edit Agent</h2>
+
+<form action="/home/updateAgent" method="post" style="display : grid; width : 30%">
+    <label style="display : none" for="agentCode">
+        Agent Code:
+        <input type="hidden" style="display : none" name="agentCode" id="agentCode" placeholder="AgentCode" value="@Model.agent.AgentCode" />
+    </label>
+    <label for="agentName">
+        Agent Name:
+        <input name="agentName" id="agentName" placeholder="AgentName" value="@Model.agent.AgentName" />
+    </label>
+
+    <label for="workingArea">
+        Working Area:
+        <input name="workingArea" id="commission" placeholder="WorkingArea" value="@Model.agent.WorkingArea" />
+    </label>
+
+    <label for="commission">
+        Commission:
+        <input name="commission" id="commission" placeholder="Commission" type="number" step=".01" value="@Model.agent.Commission" />
+    </label>
+
+    <label for="phoneNo">
+        Phone No:
+        <input name="phoneNo" id="phoneNo" placeholder="1234567890" value="@Model.agent.PhoneNo" />
+    </label>
+
+    <button class="btn btn-outline-success" type="submit" style="margin-top: 1em">Submit</button>
+</form>

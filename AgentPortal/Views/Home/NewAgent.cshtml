@@ -7,7 +7,7 @@
 <form action="/home/newAgent" method="post" style="display: grid; width: 30%">
     <label style="display : none" for="agentCode">
         Agent Code:
-        <input style="display : none" name="agentCode" id="agentCode" placeholder="AgentCode" value="@Model.AgentCode" />
+        <input type="hidden" style="display : none" name="agentCode" id="agentCode" placeholder="AgentCode" value="@Model.AgentCode" />
     </label>
 
     <label for="agentName">
@@ -30,5 +30,5 @@
         <input name="phoneNo" id="phoneNo" placeholder="1234567890" />
     </label>
 
-    <button type="submit" style="margin-top: 1em">Submit</button>
+    <button class="btn-success" type="submit" style="margin-top: 1em">Submit</button>
 </form>

@@ -10,4 +10,5 @@
 <p>Phone Number: @Model.agent.PhoneNo</p>
 <form action="/home/hideAgent/@Model.agent.AgentCode" method="post">
     <button type="submit" class="btn btn-danger" >Delete</button>
+    <a class="btn btn-outline-primary" href="/home/updateAgent/@Model.agent.AgentCode">Edit</a>
 </form>

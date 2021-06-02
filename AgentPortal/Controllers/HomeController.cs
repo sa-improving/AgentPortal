@@ -85,10 +85,18 @@ namespace AgentPortal.Controllers
             return RedirectToAction("Agents");
         }
 
+        
+        public IActionResult UpdateAgent(string id)
+        {
+            var vm = new AgentViewModel();
+            vm.agent = _agentData.GetAgentByAgentCode(id);
+            return View(vm);
+        }
+
         [HttpPost]
         public IActionResult UpdateAgent(Agent agent)
         {
-            _agentData.UpdateAgent(agent);
+            _agentData.UpdateAgentData(agent);
             return RedirectToAction("Agents");
         }
 
