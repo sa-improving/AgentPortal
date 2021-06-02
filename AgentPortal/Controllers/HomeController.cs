@@ -36,8 +36,7 @@ namespace AgentPortal.Controllers
 
         public IActionResult Agents()
         {
-            var agents = _agentData.AllAgentData();
-            var visibleAgents = _agentData.VisibleAgents(agents);
+            var visibleAgents = _agentData.VisibleAgents();
             var vm = new AgentListViewModel();
             vm.Agents = visibleAgents;
             return View(vm);
@@ -79,6 +78,7 @@ namespace AgentPortal.Controllers
             return RedirectToAction("Agents");
         }
 
+        [HttpPost]
         public IActionResult HideAgent(string id)
         {
             _agentData.HideAgent(id);

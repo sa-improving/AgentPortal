@@ -124,17 +124,45 @@ namespace AgentPortal.Models
             }
         }
 
-        public List<Agent> VisibleAgents(List<Agent> agentList)
+        public List<Agent> VisibleAgents()
         {
-            List<Agent> visible = new List<Agent>();
-            foreach(var agent in agentList)
+            var agents = new List<Agent>();
+
+            var connString = _configuration.GetConnectionString("default");
+
+            using (var conn = new SqlConnection(connString))
             {
-                if(agent.IsDeleted == false)
+                conn.Open();
+
+                var cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandText = "Select * FROM Agents WHERE IsDeleted = 0";
+
+                var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    visible.Add(agent);
+                    var agentCode = reader["AgentCode"].ToString();
+                    var agentName = reader["AgentName"].ToString();
+                    var workingArea = reader["WorkingArea"].ToString();
+                    var commission = Convert.ToDouble(reader["Commission"]);
+                    var phoneNo = reader["PhoneNo"].ToString();
+                    var isDeleted = Convert.ToBoolean(reader["IsDeleted"]);
+
+                    agents.Add(new Agent
+                    {
+                        AgentCode = agentCode,
+                        AgentName = agentName,
+                        WorkingArea = workingArea,
+                        Commission = commission,
+                        PhoneNo = phoneNo,
+                        IsDeleted = isDeleted
+                    });
+
                 }
             }
-            return visible;
+            return agents;
         }
 
         public void HideAgent(string agentCode)

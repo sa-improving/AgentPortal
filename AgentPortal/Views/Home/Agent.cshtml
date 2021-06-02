@@ -8,4 +8,6 @@
 <p>Working Area: @Model.agent.WorkingArea</p>
 <p>Commission: @Model.agent.Commission</p>
 <p>Phone Number: @Model.agent.PhoneNo</p>
-<a href="/home/hideAgent/@Model.agent.AgentCode">Delete</a>
+<form action="/home/hideAgent/@Model.agent.AgentCode" method="post">
+    <button type="submit" style="background-color: red ; color: white ; border-radius: 3px" >Delete</button>
+</form>
