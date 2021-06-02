@@ -85,6 +85,13 @@ namespace AgentPortal.Controllers
             return RedirectToAction("Agents");
         }
 
+        [HttpPost]
+        public IActionResult UpdateAgent(Agent agent)
+        {
+            _agentData.UpdateAgent(agent);
+            return RedirectToAction("Agents");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
